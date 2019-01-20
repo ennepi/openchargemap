@@ -1,0 +1,7 @@
+.logo>img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 60px;
+}
