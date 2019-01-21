@@ -1,10 +1,11 @@
 <html class="gr__leafletjs_com">
-<head>
-		<title>OCMap</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-			<!-- CSS  -->
+<head>
+	<title>OCMap</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- CSS  -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 	<link rel="stylesheet" href="css/index.css">
@@ -13,9 +14,9 @@
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-			<!-- CSS  -->
+	<!-- CSS  -->
 
-			<!--  Scripts-->
+	<!--  Scripts-->
 	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
 	 crossorigin=""></script>
 	</script>
@@ -24,19 +25,49 @@
 	 crossorigin="anonymous"></script>
 	<script src="js/materialize.js"></script>
 	<script src="js/init.js"></script>
-			<!--  Scripts-->
+	<!--  Scripts-->
 
-			<nav>
-					<div class="navbar-fixed ">
-						
-							<div class="nav-wrapper green accent-4">
-								<a href="#!" class="logo"><img src="img/logo.png"></a>
-								<ul class="right">
+	<nav>
+		<div class="navbar-fixed ">
+
+			<div class="nav-wrapper green accent-4">
+				<a href="#!" class="logo"><img src="img/logo.png"></a>
+				<ul class="right">
+					<li><a class="tooltipped boxstyle" data-position="left" data-tooltip="Your Position"><i class="material-icons">location_on</i></a></li>
+					<li><a href="#modal1" class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Cost"><i class="material-icons">euro_symbol</i></a></li>
+					<!-- MODAL COST TOWERS-->
+					<div id="modal1" class="modal">
+						<div class="modal-content">
+							<h4>Medium Cost Tower</h4>
+							<p>In the district of Lazio there are several towers with certain costs depending on who makes it available.
+								The power varies depending on the manufacturer and the number of turrets made available.</p>
+						</div>
+						<div class="modal-footer">
+							<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+						</div>
+					</div>
+					<!-- MODAL -->
+					<li><a href="#modal2" class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Favorite"><i
+						class="material-icons">stars</i></a></li>
+
+			   
+			   <div id="modal2" class="modal bottom-sheet">
+				   <div class="modal-content">
+					   <h4>Favorite towers</h4>
+					   <ul class="towers-list-container collection"></ul>
+					</div>
+					<div class="modal-footer">
+						<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+					</div>
+				</div>
+
+		</div>
+		</ul>
 </head>
+
 <body>
-	
+
 
 </body>
+
 </html>
-
-
