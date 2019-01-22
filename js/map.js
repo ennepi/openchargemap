@@ -52,3 +52,30 @@ function showPosition(position) {
 }
 
 window.onload = load_map;
+
+//SHOWSPINNER
+ 
+
+function showSpinner() {
+    document.getElementById("Spinner").classList.remove('loader');
+      
+}
+
+//SHOWSPINNER 
+
+
+//MODAL CALL AND TOAST
+
+M.toast({html: 'Welcome to Open Charge Map!'})
+ 
+setTimeout(function(){  M.toast({html: 'Remember to share your position!'}) }, 5000);
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
+
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+  
+//MODAL CALL AND TOAST
