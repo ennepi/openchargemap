@@ -79,3 +79,46 @@ $(document).ready(function(){
   });
   
 //MODAL CALL AND TOAST
+$(document).ready(function () {
+
+    const Url = 'https://api.openchargemap.io/v2/poi/?output=json&countrycode=IT&latitude=41.9055688&longitude=12.4659426&maxresults=1900&compact=true&verbose=true';
+    
+    
+        $.ajax({
+            url: Url,
+            type: "GET",
+            success: function (result) {
+                result.forEach(function (el) {
+                    let lat = el.AddressInfo.Latitude,
+                        lon = el.AddressInfo.Longitude,
+                        name = el.AddressInfo.Title,
+                        power = el.Connections[0].PowerKW;
+                        
+                        
+
+                    var chargeicon = L.icon({
+                        iconUrl: 'https://image.flaticon.com/icons/svg/926/926731.svg',
+                        iconSize: [38, 95],
+                        iconAnchor: [22, 73],
+                    });
+
+
+                    if (power == null) {
+                        tower = L.marker([lat, lon],{icon: chargeicon}).bindTooltip("" + name).addTo(map);
+                    } else {
+                        tower = L.marker([lat, lon],{icon: chargeicon}).bindTooltip("" + name + "  " + power + "KW").addTo(map);
+                    }
+
+                    if(lat == el.AddressInfo.Latitude){
+                      document.getElementById("Spinner").classList.remove('loader')
+                    }
+                
+                
+                    
+            })
+        },
+        error: function (error) {
+            console.log("errore")
+        } 
+    })
+})
