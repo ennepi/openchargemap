@@ -61,7 +61,9 @@ function showSpinner() {
       
 }
 
+
 //SHOWSPINNER 
+
 
 
 //MODAL CALL AND TOAST
@@ -79,6 +81,7 @@ $(document).ready(function(){
   });
   
 //MODAL CALL AND TOAST
+
 $(document).ready(function () {
 
     const Url = 'https://api.openchargemap.io/v2/poi/?output=json&countrycode=IT&latitude=41.9055688&longitude=12.4659426&maxresults=1900&compact=true&verbose=true';
@@ -112,13 +115,45 @@ $(document).ready(function () {
                     if(lat == el.AddressInfo.Latitude){
                       document.getElementById("Spinner").classList.remove('loader')
                     }
-                
+                    
+
+                    tower.on('click', function() {
+
+                        
+                        L.Routing.control({
+
+                          
+                            
+                            waypoints: [
+                               A= marker.getLatLng(),
+                               B= L.latLng(lat, lon),
+                            ],
+                            
+                            router: L.Routing.mapbox('pk.eyJ1IjoibmtwIiwiYSI6ImNqcXBjajg1aDAwNmw0M24ya3Y3azgyb2YifQ.6VAH3nW-oDBjiXAb-KfoKg'),
+                            
+                            
+                        })
+                        .addTo(map);
+                        map.removeLayer(marker);
+                        setTimeout(function(){  M.toast({html: 'Move Marker for change destination!'}) }, 3500);
+                    
+                        
+
+                        $('.leaflet-right').removeClass('leaflet-right').addClass('leaflet-left');
+                        $('.leaflet-bottom').removeClass('leaflet-bottom').addClass('leaflet-top');
+                        
+                        });
+
+                        
                 
                     
-            })
-        },
-        error: function (error) {
-            console.log("errore")
-        } 
+                })
+            },
+            error: function (error) {
+                console.log("errore")
+            } 
+        })
     })
-})
+
+
+
