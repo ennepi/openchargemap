@@ -14,6 +14,7 @@
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 	<!-- CSS  -->
 
 	<!--  Scripts-->
@@ -25,52 +26,93 @@
 	 crossorigin="anonymous"></script>
 	<script src="js/materialize.js"></script>
 	<script src="js/init.js"></script>
-	<script src="js/map.js"></script>
-	<script src="js/ocmapi.js"></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="js/handlebars-v4.0.12.js"></script>
 	<!--  Scripts-->
+
 
 	<nav>
 		<div class="navbar-fixed ">
+			
+				<div class="nav-wrapper green accent-4">
+					<a href="#!" class="logo"><img src="img/logo.png"></a>
+					<ul class="right ">
+						<li><a class="currentlocation tooltipped boxstyle" onclick="getLocation()" data-position="left" data-tooltip="Your Position"><i
+								 class="material-icons">location_on</i></a></li>
+						<li><a href="#modal1" class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Cost"><i class="material-icons">euro_symbol</i></a></li>
 
-			<div class="nav-wrapper green accent-4">
-				<a href="#!" class="logo"><img src="img/logo.png"></a>
-				<ul class="right">
-					<li><a class="tooltipped boxstyle" data-position="left" data-tooltip="Your Position"><i class="material-icons">location_on</i></a></li>
-					<li><a href="#modal1" class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Cost"><i class="material-icons">euro_symbol</i></a></li>
-					<!-- MODAL COST TOWERS-->
-					<div id="modal1" class="modal">
-						<div class="modal-content">
-							<h4>Medium Cost Tower</h4>
-							<p>In the district of Lazio there are several towers with certain costs depending on who makes it available.
-								The power varies depending on the manufacturer and the number of turrets made available.</p>
+						<!-- MODAL COST TOWERS-->
+						<div id="modal1" class="modal">
+							<div class="modal-content">
+								<h4>Medium Cost Tower</h4>
+								<canvas id="myChart" width="1600" height="690"></canvas>
+								<p>In the district of Lazio there are several towers with certain costs depending on who makes it available.
+									The power varies depending on the manufacturer and the number of turrets made available.</p>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+							</div>
 						</div>
-						<div class="modal-footer">
-							<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-						</div>
-					</div>
-					<!-- MODAL -->
-					<li><a href="#modal2" class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Favorite"><i
-						class="material-icons">stars</i></a></li>
+						<!-- MODAL -->
+					
+						<li><a href="#modal2" class="modal-trigger tooltipped"  data-position="bottom" data-tooltip="Favorite"><i
+								 class="material-icons">stars</i></a></li>
 
-			   
-			   <div id="modal2" class="modal bottom-sheet">
-				   <div class="modal-content">
-					   <h4>Favorite towers</h4>
-					   <ul class="towers-list-container collection"></ul>
-					</div>
-					<div class="modal-footer">
-						<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-					</div>
+						
+						<div id="modal2" class="modal bottom-sheet">
+							<div class="modal-content">
+								<h4>Favorite towers</h4>
+								<ul class="towers-list-container collection"></ul>
+
+
+								<script id="towers-template" type="text/x-handlebars-template">
+				{{#each towers}}
+				<li class="towers collection-item avatar">
+					<img src="img/{{photo}}.jpg" class="circle">
+					<span class="title">{{name}}</span>
+					<p>{{address}}</p>
+					<p>{{city}}</p>
+					<a href="#!" class="secondary-content">
+							<i class="material-icons">grade</i>
+						  </a>
+				</li>
+				{{/each}}
+			</script>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+							</div>
+						</div>
+
 				</div>
+				</ul>
 				<div id="Spinner" class="loader"></div>
+				
 		</div>
-		</ul>
+
+	</nav>
+	</div>
+
 </head>
 
 <body>
 
-		<div id="mapid"></div>
+
+	
+
+	<div id="mapid"></div>
+
+	
+	
+
+	<!-- Map script -->
+	<script src="js/map.js"></script>
+	<script src="js/favtowers.js"></script>
+	<script src="js/ocmapi.js"></script>
+	<!-- Map script -->
 
 </body>
+
 
 </html>
