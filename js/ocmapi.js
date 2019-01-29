@@ -19,9 +19,11 @@ $.getJSON("https://api.myjson.com/bins/cqa18", function showPie(UsageCost) {
     tot= valoremaggiore + valoreminore;
     valoremaggiore= valoremaggiore/tot*100;
     valoremaggiore= Math.round(valoremaggiore);
+    valoremaggiore=valoremaggiore-1;
     valoreminore= valoreminore/tot*100;
     valoreminore= Math.round(valoreminore);
-
+    valoreminore=valoreminore-1;
+    var altrivalori=2;
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -30,15 +32,16 @@ $.getJSON("https://api.myjson.com/bins/cqa18", function showPie(UsageCost) {
     
        
         data: {
-            labels: ["0,40 €KWh", "Free"],
+            labels: ["0,40 €KWh", "Free","Other"],
             datasets: [{
                 label: "Rome Usage Cost",
                 backgroundColor: [
-                    'rgb(0,200,83)',
-                    'rgb(165,214,167)'
+                    'rgb(0,230,118)',
+                    'rgb(105,240,174)',
+                    'rgb(185,246,202)'
                 ],
                 borderColor: 'rgb(255,255,255)',
-                data: [valoremaggiore, valoreminore],
+                data: [valoremaggiore, valoreminore, altrivalori],
                 
             }]
         },
